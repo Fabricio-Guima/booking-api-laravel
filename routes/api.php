@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\{
     LoginController, RegisterController
 };
 use App\Http\Controllers\Owner\PropertyController;
+use App\Http\Controllers\Public\PropertySearchController;
 use App\Http\Controllers\User\BookingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -18,3 +19,5 @@ Route::middleware(['auth:sanctum', 'check-permission-of-user-middleware'])->grou
 
     Route::get('user/bookings',[BookingController::class, 'index']);
 });
+
+Route::get('search',PropertySearchController::class);
