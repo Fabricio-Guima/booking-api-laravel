@@ -11,13 +11,6 @@ class AuthTest extends TestCase
 {
     use RefreshDatabase;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->seed(\Database\Seeders\RoleSeeder::class);
-    }
-
     public function test_registration_fails_with_admin_role()
     {
         $response = $this->postJson('/api/auth/register', [
