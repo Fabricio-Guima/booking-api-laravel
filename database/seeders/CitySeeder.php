@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\City;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class CitySeeder extends Seeder
@@ -13,18 +12,19 @@ class CitySeeder extends Seeder
      */
     public function run(): void
     {
-        City::create([
-            'country_id' => 1,
-            'name' => 'New York',
-            'lat' => 40.712776,
-            'long' => -74.005974,
-        ]);
+        City::updateOrCreate(
+            ['name' => 'New York'],
+            ['country_id' => 1, 'lat' => 40.712776, 'long' => -74.005974]
+        );
 
-        City::create([
-            'country_id' => 2,
-            'name' => 'London',
-            'lat' => 51.507351,
-            'long' => -0.127758,
-        ]);
+        City::updateOrCreate(
+            ['name' => 'London'],
+            ['country_id' => 2, 'lat' => 51.507351, 'long' => -0.127758]
+        );
+
+        City::updateOrCreate(
+            ['name' => 'São João de Meriti'],
+            ['country_id' => 3, 'lat' => -22.80389, 'long' => -43.37222]
+        );
     }
 }
