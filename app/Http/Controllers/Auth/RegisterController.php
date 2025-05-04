@@ -28,6 +28,8 @@ class RegisterController extends Controller
             'role_id' => $request->role_id,
         ]);
 
+        $user->markEmailAsVerified();
+
         return response()->json([
             'access_token' => $user->createToken('client')->plainTextToken,
         ]);
