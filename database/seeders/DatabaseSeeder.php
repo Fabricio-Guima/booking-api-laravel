@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Apartment;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -19,6 +20,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call(CountrySeeder::class);
         $this->call(CitySeeder::class);
+        $this->call(PropertySeeder::class);
         $this->call(GeoobjectSeeder::class);
+        $this->call(ApartmentSeeder::class);
+        // apartment_type is created in ApartmentType migration
     }
 }
