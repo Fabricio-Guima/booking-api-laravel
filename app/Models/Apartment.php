@@ -15,7 +15,8 @@ class Apartment extends Model
         'size',
         'name',
         'capacity_adults',
-        'capacity_children'
+        'capacity_children',
+        'bathrooms'
     ];
 
     public function property()
