@@ -15,6 +15,7 @@ class ApartmentSeeder extends Seeder
     {
         Apartment::create([
             'property_id' => 1,
+            'apartment_type_id' => 1,
             'name' => 'Small apartment',
             'capacity_adults' => 1,
             'capacity_children' => 0,
@@ -22,6 +23,7 @@ class ApartmentSeeder extends Seeder
 
         Apartment::create([
             'property_id' => 1,
+            'apartment_type_id' => 2,
             'name' => 'Large apartment',
             'capacity_adults' => 3,
             'capacity_children' => 2,
