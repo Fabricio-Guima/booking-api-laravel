@@ -14,9 +14,12 @@ return new class extends Migration
         Schema::create('apartments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('property_id')->constrained();
+            $table->foreignId('apartment_type_id')->nullable()->constrained();
+            $table->unsignedInteger('size')->nullable();
             $table->string('name');
             $table->unsignedInteger('capacity_adults');
             $table->unsignedInteger('capacity_children');
+            $table->unsignedInteger('bathrooms')->default(0);
             $table->timestamps();
         });
     }
