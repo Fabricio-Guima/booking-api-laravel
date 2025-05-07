@@ -10,4 +10,9 @@ class RoomType extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+
+    public function rooms()
+    {
+        return $this->hasMany(Room::class);
+    }
 }
