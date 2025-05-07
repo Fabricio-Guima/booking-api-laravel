@@ -10,4 +10,9 @@ class ApartmentType extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+
+    public function apartments()
+    {
+        return $this->hasMany(Apartment::class);
+    }
 }
