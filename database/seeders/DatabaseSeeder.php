@@ -24,5 +24,8 @@ class DatabaseSeeder extends Seeder
         $this->call(GeoobjectSeeder::class);
         $this->call(ApartmentSeeder::class);
         // apartment_type is created in ApartmentType migration
+        $this->call(RoomAndBedSeeder::class);
+        $this->call(FacilityCategorySeeder::class);
+        $this->call(FacilitySeeder::class);
     }
 }
