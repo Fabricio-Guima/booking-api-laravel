@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Http\Middleware\GateDefineMiddleware;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        JsonResource::withoutWrapping();
         $this->app->bind('check-permission-of-user-middleware', GateDefineMiddleware::class);
     }
 }
