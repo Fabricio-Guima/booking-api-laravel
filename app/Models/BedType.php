@@ -10,4 +10,9 @@ class BedType extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+
+    public function beds()
+    {
+        return $this->hasMany(Bed::class);
+    }
 }
