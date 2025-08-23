@@ -4,6 +4,8 @@ use App\Http\Controllers\Auth\{
     LoginController, RegisterController
 };
 use App\Http\Controllers\Owner\PropertyController;
+use App\Http\Controllers\Public\ApartmentController;
+use App\Http\Controllers\Public\PropertyController as PublicPropertyController;
 use App\Http\Controllers\Public\PropertySearchController;
 use App\Http\Controllers\User\BookingController;
 use Illuminate\Http\Request;
@@ -21,3 +23,5 @@ Route::middleware(['auth:sanctum', 'check-permission-of-user-middleware'])->grou
 });
 
 Route::get('search',PropertySearchController::class);
+Route::get('properties/{property}', PublicPropertyController::class);
+Route::get('apartments/{apartment}', ApartmentController::class);
