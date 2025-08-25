@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\{
     LoginController, RegisterController
 };
 use App\Http\Controllers\Owner\PropertyController;
+use App\Http\Controllers\Owner\PropertyPhotoController;
 use App\Http\Controllers\Public\ApartmentController;
 use App\Http\Controllers\Public\PropertyController as PublicPropertyController;
 use App\Http\Controllers\Public\PropertySearchController;
@@ -16,8 +17,13 @@ Route::post('auth/register', RegisterController::class);
 
 Route::middleware(['auth:sanctum', 'check-permission-of-user-middleware'])->group(function() {
 
-    Route::get('owner/properties',[PropertyController::class, 'index']);
-    Route::post('owner/properties', [PropertyController::class, 'store']);
+
+    Route::prefix('owner')->group(function () {
+        Route::get('properties',[PropertyController::class, 'index']);
+        Route::post('properties', [PropertyController::class, 'store']);
+
+        Route::post('properties/{property}/photos', [PropertyPhotoController::class, 'store']);
+    });
 
     Route::get('user/bookings',[BookingController::class, 'index']);
 });
@@ -25,3 +31,5 @@ Route::middleware(['auth:sanctum', 'check-permission-of-user-middleware'])->grou
 Route::get('search',PropertySearchController::class);
 Route::get('properties/{property}', PublicPropertyController::class);
 Route::get('apartments/{apartment}', ApartmentController::class);
+
+
