@@ -56,6 +56,23 @@ services:
         networks:
             - laravel
 
+    # container somente para rodar as filas do laravel
+    queue:
+        build:
+            args:
+                user: fsg
+                uid: 1000
+            context: .
+            dockerfile: Dockerfile
+        restart: unless-stopped
+        command: "php artisan queue:work"
+        volumes:
+            - ./:/var/www
+        depends_on:
+            - redis
+        networks:
+            - laravel
+
     # redis
     redis:
         image: redis:latest
