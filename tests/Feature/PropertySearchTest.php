@@ -10,6 +10,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\City;
 use App\Models\Country;
+use App\Models\Facility;
 use App\Models\Geoobject;
 use App\Models\Property;
 use App\Models\Role;
