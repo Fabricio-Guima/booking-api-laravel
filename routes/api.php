@@ -23,6 +23,7 @@ Route::middleware(['auth:sanctum', 'check-permission-of-user-middleware'])->grou
         Route::post('properties', [PropertyController::class, 'store']);
 
         Route::post('properties/{property}/photos', [PropertyPhotoController::class, 'store']);
+        Route::post('properties/{property}/photos/{photo}/reorder/{newPosition}', [PropertyPhotoController::class, 'reorder']);
     });
 
     Route::get('user/bookings',[BookingController::class, 'index']);
