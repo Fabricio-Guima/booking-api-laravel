@@ -15,7 +15,8 @@ class PropertySearchController extends Controller
         $properties = Property::with([
             'city',
             'apartments.apartment_type',
-            'apartments.rooms.beds.bed_type'
+            'apartments.rooms.beds.bed_type',
+            'facilities',
             ])
             ->when($request->city, function($query) use ($request) {
                 $query->where('city_id', $request->city);
@@ -48,6 +49,18 @@ class PropertySearchController extends Controller
             })
             ->get();
 
-        return PropertySearchResource::collection($properties);
+            // dd($properties);
+
+        $allFacilities = $properties->pluck('facilities')->flatten();
+        $facilities = $allFacilities->unique('name')
+            ->mapWithKeys(function ($facility) use ($allFacilities) {
+                return [$facility->name => $allFacilities->where('name', $facility->name)->count()];
+            })
+            ->sortDesc();
+
+            return [
+                'properties' => PropertySearchResource::collection($properties),
+                'facilities' => $facilities,
+            ];
     }
 }
